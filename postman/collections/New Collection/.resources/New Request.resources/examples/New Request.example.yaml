@@ -1,0 +1,33 @@
+$kind: http-example
+request:
+  url: http://localhost:8081/books
+  method: POST
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "price": 12.99
+      }
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: application/json
+    content-length: "80"
+    date: Thu, 17 Sep 2026 07:05:55 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: json
+    content: |-
+      {
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "price": 12.99,
+        "id": 5
+      }
+order: 1789629047659

@@ -1,0 +1,33 @@
+$kind: http-request
+url: http://localhost:8081/books
+method: POST
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Response time is less than 200ms", function () {
+          pm.expect(pm.response.responseTime).to.be.below(200);
+      });
+
+      pm.test("Response body has correct structure", function () {
+          const jsonData = pm.response.json();
+          pm.expect(jsonData).to.have.property("title");
+          pm.expect(jsonData).to.have.property("author");
+          pm.expect(jsonData).to.have.property("price");
+          pm.expect(jsonData).to.have.property("id");
+      });
+examples: .resources/New Request.resources/examples
+order: 1789628368562
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "price": 12.99
+    }
