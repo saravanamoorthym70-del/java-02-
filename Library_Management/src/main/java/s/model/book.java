@@ -12,7 +12,9 @@ public class book {
     private Long id;
 
     private String title;
-    private String author;
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author;
     private float price;
 
     protected book() {
@@ -48,7 +50,7 @@ public class book {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(float price){
         this.price = price;
     }
 }
