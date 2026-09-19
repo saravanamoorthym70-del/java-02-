@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library | Books</title>
+    <link rel="stylesheet" th:href="@{/library.css}" href="/library.css">
+</head>
+<body data-page="books">
+<header class="topbar">
+    <a class="brand" href="/books">The Quiet Shelf</a>
+    <nav><a href="/books">Collection</a><a href="/add-book">Add a book</a></nav>
+</header>
+<main>
+    <p class="eyebrow">Library management</p>
+    <h1>Every good library begins with a list.</h1>
+    <p class="intro">Keep the collection tidy, discover what is on the shelf, and make room for the next story.</p>
+    <div class="toolbar"><span id="book-count" class="count">Loading books...</span><a class="button" href="/add-book">Add book</a></div>
+    <div class="table-wrap"><table><thead><tr><th>Title</th><th>Author</th><th>Price</th><th>Actions</th></tr></thead><tbody id="book-list"></tbody></table></div>
+</main>
+<script th:src="@{/library.js}" src="/library.js"></script>
+</body>
+</html>

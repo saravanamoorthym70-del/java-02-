@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import s.model.Author;
 import s.model.book;
 import s.repository.Bookrepository;
 
@@ -16,7 +17,7 @@ public class BookServices {
     }
 
     public book getBook() {
-        return new book("java", "James Gosling", 599.0f);
+        return new book("java", new Author("James Gosling", "james@gosling.com"), 599.0f);
     }
 
     public book addBook(book newBook) {
@@ -47,7 +48,7 @@ public class BookServices {
     }
 
     public List<book> getBooksByAuthor(String author) {
-        return repository.findByAuthor(author);
+        return repository.findByAuthorName(author);
     }
 
     public List<book> getBooksByTitle(String title) {
@@ -59,15 +60,15 @@ public class BookServices {
     }
 
     public List<book> getBooksByAuthorAndTitle(String author, String title) {
-        return repository.findByAuthorAndTitle(author, title);
+        return repository.findByAuthorNameAndTitle(author, title);
     }
 
     public List<book> getBooksByAuthorOrTitle(String author, String title) {
-        return repository.findByAuthorOrTitle(author, title);
+        return repository.findByAuthorNameOrTitle(author, title);
     }
 
     public List<book> getBooksByAuthorAndPriceRange(String author, float minPrice, float maxPrice) {
-        return repository.findByAuthorAndPriceBetween(author, minPrice, maxPrice);
+        return repository.findByAuthorNameAndPriceBetween(author, minPrice, maxPrice);
     }
 
     public List<book> getBooksByTitleAndPriceRange(String title, float minPrice, float maxPrice) {
@@ -75,18 +76,18 @@ public class BookServices {
     }
 
     public List<book> getBooksByAuthorOrTitleAndPriceRange(String author, String title, float minPrice, float maxPrice) {
-        return repository.findByAuthorOrTitleAndPriceBetween(author, title, minPrice, maxPrice);
+        return repository.findByAuthorNameOrTitleAndPriceBetween(author, title, minPrice, maxPrice);
     }
 
     public List<book> getBooksByAuthorAndTitleAndPriceRange(String author, String title, float minPrice, float maxPrice) {
-        return repository.findByAuthorAndTitleAndPriceBetween(author, title, minPrice, maxPrice);
+        return repository.findByAuthorNameAndTitleAndPriceBetween(author, title, minPrice, maxPrice);
     }
 
     public List<book> getBooksByAuthorOrTitleOrPriceRange(String author, String title, float minPrice, float maxPrice) {
-        return repository.findByAuthorOrTitleOrPriceBetween(author, title, minPrice, maxPrice);
+        return repository.findByAuthorNameOrTitleOrPriceBetween(author, title, minPrice, maxPrice);
     }
 
     public List<book> getBooksByAuthorAndTitleOrPriceRange(String author, String title, float minPrice, float maxPrice) {
-        return repository.findByAuthorAndTitleOrPriceBetween(author, title, minPrice, maxPrice);
+        return repository.findByAuthorNameAndTitleOrPriceBetween(author, title, minPrice, maxPrice);
     }
 }

@@ -1,9 +1,12 @@
 package s.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class book {
@@ -12,15 +15,17 @@ public class book {
     private Long id;
 
     private String title;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id")
     private Author author;
+
     private float price;
 
     protected book() {
     }
 
-    public book(String title, String author, float price) {
+    public book(String title, Author author, float price) {
         this.title = title;
         this.author = author;
         this.price = price;
@@ -38,11 +43,11 @@ public class book {
         this.title = title;
     }
 
-    public String getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(Author author) {
         this.author = author;
     }
 

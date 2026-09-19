@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library | Edit book</title>
+    <link rel="stylesheet" th:href="@{/library.css}" href="/library.css">
+</head>
+<body data-page="form">
+<header class="topbar"><a class="brand" href="/books">The Quiet Shelf</a><nav><a href="/books">Collection</a><a href="/add-book">Add a book</a></nav></header>
+<main>
+    <p class="eyebrow">Update the catalogue</p><h1>Edit this book.</h1><p class="intro">Keep the details on the shelf accurate.</p>
+    <form id="book-form" class="form-panel">
+        <label for="title">Title</label><input id="title" name="title" required maxlength="255" autocomplete="off">
+        <label for="author">Author</label><select id="author" name="author" required><option>Loading authors...</option></select>
+        <label for="price">Price</label><input id="price" name="price" type="number" min="0" step="0.01" required>
+        <p id="form-error" class="error" role="alert"></p>
+        <div class="form-actions"><a class="button secondary" href="/books">Cancel</a><button type="submit">Save changes</button></div>
+    </form>
+</main>
+<script th:src="@{/library.js}" src="/library.js"></script>
+</body>
+</html>

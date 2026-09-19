@@ -1,19 +1,20 @@
 CREATE DATABASE IF NOT EXISTS library_management;
 USE library_management;
 
-CREATE TABLE IF NOT EXISTS book (
-    id BIGINT NOT NULL AUTO_INCREMENT,
-    title VARCHAR(255),
-    author VARCHAR(255),
-    price FLOAT NOT NULL,
-    PRIMARY KEY (id)
-);
-
 CREATE TABLE IF NOT EXISTS author (
     id BIGINT NOT NULL AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255),
     PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS book (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255),
+    author_id BIGINT,
+    price FLOAT NOT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT fk_book_author FOREIGN KEY (author_id) REFERENCES author(id)
 );
 
 CREATE TABLE IF NOT EXISTS price (

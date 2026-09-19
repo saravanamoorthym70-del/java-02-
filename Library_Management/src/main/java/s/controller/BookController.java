@@ -2,6 +2,7 @@ package s.controller;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +16,7 @@ import s.model.book;
 import s.services.BookServices;
 
 @RestController
-@RequestMapping("/books")
+@RequestMapping("/api/books")
 public class BookController {
 	private final BookServices bookServices;
 
@@ -44,7 +45,8 @@ public class BookController {
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteBook(@PathVariable Long id) {
+	public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
 		bookServices.deleteBook(id);
+		return ResponseEntity.noContent().build();
 	}
 }
